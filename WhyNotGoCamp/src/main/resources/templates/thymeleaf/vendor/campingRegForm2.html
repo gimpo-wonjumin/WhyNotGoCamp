@@ -2,7 +2,17 @@
 <html>
 <head>
 <meta charset="utf-8">
-<title>캠핑지 등록 2단계</title>
+<title>캠핑지 세부사항 등록</title>
+<style>
+	body { font: system-ui; font-family: sans-serif; display: block; margin: auto; width:1500px; height:100%;}
+	main {position:relative; margin: 0 auto; height: 100%; margin-top:50px; margin-bottom: 70px;}
+	h4{margin-bottom: 5px;margin-top: 10px;color:#73685D;}
+	.fac_img{width:40px;}
+	#content {width: 40%;  margin: 0 auto;padding-left: 10%;padding-right: 10%;}
+	#logo{display: flex; justify-content: center;align-items: center;}
+	#logo img{width:70px;margin:5px;}
+	#submit{background-color: #F6F6C9;width:90%;height: 45px;border:1px solid #464E2E;font-weight: 600;color: #464E2E;}
+</style>
 <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
 <script type="text/javascript">
 var checkUnload = true;
@@ -44,34 +54,39 @@ function unbind(){
 </script>
 </head>
 <body>
+<th:block th:include="@{/thymeleaf/vendor/Header.html}"></th:block>
 	<main>
+	<div id="content">
 		<form id="facilities">
-			<div>
-			  	<h5>부대시설 체크</h5>
-			  		<span>와이파이</span>
+			<div id="contents">
+				<div id="logo"><img src="/img/캠핑 로고.jpg" ><h2>캠핑어때</h2></div>
+			  	<h2>캠핑지 세부사항 등록</h2>
+			  		<h4>와이파이</h4><img class="fac_img" src="/img/wifi.jpeg">
 					<label><input type="radio" name="wifi" value="1">있음</label>
 					<label><input type="radio" name="wifi" value="0" checked="checked">없음</label><br>
-					<span>반려동물</span>
+					<h4>반려동물</h4><img class="fac_img" src="/img/animal.jpeg">
 					<label><input type="radio" name="pet" value="1">가능</label>
 					<label><input type="radio" name="pet" value="0" checked="checked">불가능</label><br>
-					<span>취사가능</span>
+					<h4>취사여부</h4><img class="fac_img" src="/img/cook.jpeg">
 					<label><input type="radio" name="cook" value="1">가능</label>
 					<label><input type="radio" name="cook" value="0" checked="checked">불가능</label><br>
-					<span>바베큐</span>
+					<h4>바베큐</h4><img class="fac_img" src="/img/bbq.jpeg">
 					<label><input type="radio" name="bbq" value="1">있음</label>
 					<label><input type="radio" name="bbq" value="0" checked="checked">없음</label><br>
-					<span>캠프파이어</span>
+					<h4>캠프파이어</h4><img class="fac_img" src="/img/fire.jpeg">
 					<label><input type="radio" name="fire" value="1">있음</label>
 					<label><input type="radio" name="fire" value="0" checked="checked">없음</label><br>
-					<span>화장실</span>
+					<h4>화장실</h4><img class="fac_img" src="/img/toilet.jpeg">
 					<label><input type="radio" name="toilet" value="1">있음</label>
 					<label><input type="radio" name="toilet" value="0" checked="checked">없음</label><br>
-			 </div>
-			 캠핑장 사진파일 <input type="file" name="cfiles" multiple="multiple"><br>
+			 </div><p>
+			 캠핑장 사진파일 <input type="file" name="cfiles" multiple="multiple"><p>
 			 캠핑장 약도 파일 <input type="file" name="map"><br>
 		</form>
-		
-		<input type="button" onclick="unbind(); register();" value="등록">
+		<p>
+		<input id="submit" type="button" onclick="unbind(); register();" value="등록">
+		</div>
 	</main>
+	<th:block th:include="@{/thymeleaf/vendor/Footer.html}"></th:block>
 </body>
 </html>
