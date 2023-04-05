@@ -178,7 +178,7 @@ public class SearchService
 	
 	//파이썬 연결 - 지환 
 	//Post방식
-	public List<Integer> pyPostTest(int unum) throws IOException {
+	public List<Integer> pythonConnect(int unum) throws IOException {
 		
 	    URL url = new URL("http://localhost:7717/recommend/"+unum);
 	    HttpURLConnection connection = (HttpURLConnection) url.openConnection();
@@ -219,17 +219,15 @@ public class SearchService
 	{		
 		try 
 		{
-			List<Integer> RecommendCampingList = pyPostTest(unum);
-			List<CampingMain> recList = dao.userRecommend(RecommendCampingList);	
-			
+			List<Integer> RecommendCampingList = pythonConnect(unum);
+			List<CampingMain> recList = dao.userRecommend(RecommendCampingList);			
 			return recList;		
 		} 
 		catch (IOException e)
 		{
 			System.err.println("파이썬연결안됨");
 			e.printStackTrace();
-		}		
-		
+		}				
 		return null;
 	}
 

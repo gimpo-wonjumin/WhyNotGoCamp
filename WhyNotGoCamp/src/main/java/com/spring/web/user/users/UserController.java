@@ -48,7 +48,7 @@ public class UserController {
     {
     	return "thymeleaf/user/userRegister";
     }
-    @GetMapping("/loginpage")  //유저 로그인폼 -지호
+    @GetMapping("/loginpage")  //유저 로그인s폼 -지호
     public String loginpage()
     {
     	return "thymeleaf/user/userLogin";
