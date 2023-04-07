@@ -28,9 +28,9 @@
 <div id="map" style="width:100%;height:700px;"></div><!-- 지도를 표시할 div-->
 
 
-	<div id="map-container" style="display:none;">
+	<div id="map-container" style="display:none; width:100%;">
 		<div id="map-placeholder" >
-			<div class="search-form">
+			<div class="search-form" style="margin:auto;">
 			   <form action="/search/camp" method="get" id="_layout_search_border_" onsubmit="return mainsearchCheck(this);">
 			      <div class="row">
 			         <input autocomplete="off"  type="text" id="totalsearch" name="keyword" maxlength="14" placeholder="검색결과가 없습니다" onfocus="this.placeholder = ''" onblur="this.placeholder ='키워드 검색'" 

@@ -55,12 +55,12 @@
             cache:false,
             dataType:'json',
             success:function(res){                      
-               if(res.confirm==true){
+               if(res.confirm_user==true){
 
                   location.href='/user/main';
                     
                }
-               if(res.confirm==false){
+               else{
                   alert("로그인정보를 확인해주세요");   
                }
             },

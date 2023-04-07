@@ -4,6 +4,7 @@ import javax.sql.DataSource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpRequest;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.method.configuration.GlobalMethodSecurityConfiguration;
@@ -25,8 +26,8 @@ import lombok.extern.slf4j.Slf4j;
 public class JdbcSecurityConfig extends GlobalMethodSecurityConfiguration
 {
 	@Autowired
-	DataSource source;
-	
+	DataSource source;	
+
    @Autowired
     DataSource dataSource;    // JDBC Authentication에 필요함
 
@@ -57,13 +58,14 @@ public class JdbcSecurityConfig extends GlobalMethodSecurityConfiguration
 
    @Bean
    public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
+
       log.info("접근제한 설정");
       return http.authorizeHttpRequests()/* 권한에 따른 인가(Authorization) */
 
             .antMatchers("/vendor/login","/vendor/join","/vendor/vidcheck/**","/vendor/cname_check/**","/vendor/sendEmail/**","/vendor/verifyEmail/**","/admin/login").permitAll()
             .antMatchers("/vendor/**").hasAnyRole("VENDOR","ADMIN")
             .antMatchers("/userinfo/**").hasAnyRole("USER","ADMIN")
-        //    .antMatchers("/book/**").hasAnyRole("USER","ADMIN")
+            .antMatchers("/book/**").hasAnyRole("USER","ADMIN")
 
             //.anyRequest().authenticated()  // 위의 설정 이외의 모든 요청은 인증을 거쳐야 한다
             .anyRequest().permitAll()        // 위의 설정 이외의 모든 요청은 인증 요구하지 않음
@@ -94,7 +96,7 @@ public class JdbcSecurityConfig extends GlobalMethodSecurityConfiguration
                
              .and()   // 디폴트 로그아웃 URL = /logout
              .logout().logoutRequestMatcher(new AntPathRequestMatcher("/logout")) //로그아웃 요청시 URL
-             .logoutSuccessUrl("/user/main")
+             .logoutSuccessUrl("/login/login")
          	 .invalidateHttpSession(true) 
              .deleteCookies("JSESSIONID")
              .permitAll()

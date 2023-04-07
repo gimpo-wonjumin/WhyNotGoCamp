@@ -18,9 +18,10 @@
 				dataType:'json',                      
 				success : function(res)                
 				{		
-					if(res.confirm) //함수에 넣어준값 확인할것
-					{						
-						location.href="/user/main"; //성공시 주소(redirect?넣은 url? 확인바람)
+					if(res.confirm_user) //함수에 넣어준값 확인할것
+					{		
+						history.go(-1);
+						//location.href="/user/main"; //성공시 주소(redirect?넣은 url? 확인바람)
 					}
 					else
 					{
@@ -29,7 +30,7 @@
 				},
 				error : function(xhr,status,err)
 				{
-					alert(err);	
+					alert("ID 혹은 비밀번호가 잘못 입력되었거나, 등록되지 않은 ID입니다.");	
 				}
 				});		
 	}
@@ -46,18 +47,18 @@
 				dataType:'json',  
 				success : function(res)                
 				{		
-					if(res.confirm) //함수에 넣어준값 확인할것
+					if(res.confirm_vendor) //함수에 넣어준값 확인할것
 					{
 						setTimeout(location.href="/vendor/main",1000)
 					}
 					else
 					{
-						alert('실패 돌아감'); //실패시 메세지만.
+						alert('ID 혹은 비밀번호가 잘못 입력되었거나, 등록되지 않은 ID입니다.'); //실패시 메세지만.
 					}
 				},
 				error : function(xhr,status,err)
 				{
-					alert('에러 돌아감')
+					alert('ID 혹은 비밀번호가 잘못 입력되었거나, 등록되지 않은 ID입니다.');
 				}
 				});		
 	}

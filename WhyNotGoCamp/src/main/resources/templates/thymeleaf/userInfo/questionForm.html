@@ -19,9 +19,7 @@
 
 function addQuestion()
 {			
-	var serData = $('#contents').serialize();
-	alert('???'+serData);
-	
+	var serData = $('#contents').serialize();	
 	$.ajax({
 			url : '/userinfo/addquestion',	
 			method : 'post',
@@ -59,7 +57,7 @@ function addQuestion()
 		<input type='hidden' name='nickname' th:value='${session.nickname}'>
 		<input type='hidden' name='cnum' th:value='${cnum}'>
 		<label>질문내용</label><p>
-		<textarea type='text' name='question' placeholder='질문 내용을 입력하세요.' cols='80' rows='30' style="font-size:23px;"></textarea> <br>
+		<textarea type='text' name='question' placeholder='질문 내용을 입력하세요.' cols=50% rows=10% style="font-size:23px;"></textarea> <br>
 		<button type='button' onclick='addQuestion();'>질문 제출</button>
 		 
 	</form>
