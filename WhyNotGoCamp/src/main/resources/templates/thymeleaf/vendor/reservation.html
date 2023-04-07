@@ -7,7 +7,7 @@
 <script type="text/javascript">
 $(function(){
 	var num =  parseInt(document.location.href.split('reservation/')[1]);
-	var pages = [[${pages}]];
+	var pages = /*[[${pages}]]*/1;
 	$('#a'+num).css('color','black');
 	if (num ==1){
 		$('#prev').css('color','grey')
