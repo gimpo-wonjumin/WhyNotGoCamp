@@ -60,7 +60,7 @@ public class LoginController {
 				svc.insertAlarmByReview(user2.getUnum());
 				session.setAttribute("unum", user2.getUnum());
 				session.setAttribute("nickname", user2.getNickname());
-				map.put("confirm",true);
+				map.put("confirm_user",true);
 				log.info("여기 유저 로그인 성공시 옴");
 				return map;
 			}
@@ -69,7 +69,7 @@ public class LoginController {
 				int vnum = svc.getVnum(vid);				
 				session.setAttribute("vnum", vnum);
 				session.setAttribute("vid", vid);
-				map.put("confirm", true);
+				map.put("confirm_vendor", true);
 				return map;
 			}
 			case "ROLE_ADMIN": {

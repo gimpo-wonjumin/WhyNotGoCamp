@@ -39,9 +39,9 @@ function login()
  		data : ser,
  		dataType : 'json',
  		success : function(res)	{
- 			var msg = res.confirm ? "로그인 성공" : "실패ㅜㅜ";
+ 			var msg = res.confirm_vendor ? "로그인 성공" : "실패ㅜㅜ";
  			alert(msg);
- 			if(res.confirm) {
+ 			if(res.confirm_vendor) {
  				location.href='/vendor/main';
  			}
  		},
