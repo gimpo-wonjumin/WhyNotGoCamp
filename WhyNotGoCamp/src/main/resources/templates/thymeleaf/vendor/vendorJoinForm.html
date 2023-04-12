@@ -91,9 +91,9 @@ function join() // 회원가입 ajax
 		 	});
 		}
 	}  else if(!check) {
-		alert("아이디 중복확인 후 가능합니다");
+		alert("아이디 중복확인이 필요합니다");
 	} else if(!email_check){
-		alert("이메일 인증을 해주세요");
+		alert("이메일 인증이 필요합니다");
 	} 
 }
 
@@ -167,13 +167,13 @@ function email_verify() {
          <div class="regform_text_3">비즈니스를 시작하세요!</div>
             <div class="reg_data">
                 <form id="joinForm" class="joinForm">
-                <div><input id="vid" name="vid" type="text" placeholder="아이디" required><button onclick="vid_check();">중복확인</button></div>
+                <div><input id="vid" name="vid" type="text" placeholder="아이디" required><button class="check_btn" onclick="vid_check();">중복확인</button></div>
                 <div><input id="pwd" name="pwd" type="password" required placeholder="비밀번호(영문+숫자+특수문자,8-15글자)"></div>
                 <div><input id="pwd2" name="pwd2" type="password" required placeholder="비밀번호확인" onkeyup="searchFunction();"></div>
                 <div class="check"><h6 id="checkMessage"></h6></div>
                 <div><input name="vname" type="text" required placeholder="이름"></div>
-                <div><input id="email" name="email" type="text" required placeholder="이메일"><button id="send_btn" type="button" onclick="sendEmail();">인증요청</button></div>
-                <div id="verify"><input type="text" id="code" name="code" placeholder="인증코드"><button onclick="email_verify()">인증</button></div>
+                <div><input id="email" name="email" type="text" required placeholder="이메일"><button class="check_btn" type="button" onclick="sendEmail();">인증요청</button></div>
+                <div id="verify"><input type="text" id="code" name="code" placeholder="인증코드"><button class="check_btn" onclick="email_verify()">인증</button></div>
                 <div><input name="phone" type="text" required placeholder="핸드폰번호"></div>
                 <div><input name="license" type="text" required placeholder="사업장등록번호"></div>
                 </form>

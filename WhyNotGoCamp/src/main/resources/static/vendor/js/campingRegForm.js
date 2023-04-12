@@ -1,11 +1,11 @@
 num = 1;
-	function add_siteForm()
+	function add_siteForm() // 추가 버튼 누를때마다 사이트 폼 한개씩 추가
 	{
-		var siteForm = '<form id="site'+num+'">'+
+		var siteForm = '<form class="sites" id="site'+num+'">'+
 		'<input type="hidden" name="snum" value="'+num+'">'+
-		'사이트 이름: <input type="text" id="sname" name="sname" value="동백">'+
-		'최대인원: <input type="number" name="max_ppl" min="1" value="1">'+
-		'가격: <input type="number" name="price" min="0" value="0" step="1000">'+
+		num+'. 이름 <input type="text" id="sname" name="sname" value="">'+
+		' 최대인원 <input type="number" name="max_ppl" min="1" value="1">'+
+		' 가격 <input type="number" name="price" min="0" value="10000" step="1000">'+
 		'</form>'
 		$('#site').append(siteForm);
 		num += 1;

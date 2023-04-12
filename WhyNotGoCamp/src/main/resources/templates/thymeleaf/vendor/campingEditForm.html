@@ -238,7 +238,6 @@ var callback = function(result, status) {
 	function editCampingMain()
 	{
 		var serData = $('#editcamp').serialize();
-		alert(serData);		
 		
 		$.ajax({
 				url : '/vendor/editcampmain',	
@@ -270,8 +269,7 @@ var callback = function(result, status) {
 	function editFacilities()
 	{
 		var serData = $('#editfac').serialize();
-		alert(serData);		
-		
+
 		$.ajax({
 				url : '/vendor/editfacilities',	
 				method : 'post',
@@ -281,7 +279,7 @@ var callback = function(result, status) {
 				success : function(res)                
 				{		
 					if(res.updated)
-					{						
+					{		
 						alert(res.msg);
 						location.reload();
 					}
@@ -304,7 +302,6 @@ var callback = function(result, status) {
 	{
 	
 		var serData = $('#'+snum).serialize();
-		alert(serData);		
 		
 		$.ajax({
 				url : '/vendor/editcampsite',	
@@ -315,7 +312,7 @@ var callback = function(result, status) {
 				success : function(res)                
 				{		
 					if(res.updated)
-					{						
+					{			
 						alert(res.msg);
 						location.reload();
 					}

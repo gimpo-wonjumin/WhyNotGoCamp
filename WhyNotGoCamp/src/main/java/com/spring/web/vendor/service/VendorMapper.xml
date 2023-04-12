@@ -223,8 +223,8 @@
 	
 	<!-- 예약 리스트 구하기 -->
 	<select id="getBookingList" parameterType='Integer' resultType="com.spring.web.vendor.vo.Booking">
-		SELECT b.* FROM booking b INNER JOIN CAMPING_SITE s ON b.snum=s.snum
-		 WHERE b.cnum=(SELECT cnum FROM CAMPING_MAIN WHERE vnum=#{vnum})
+		SELECT b.* FROM booking b INNER JOIN CAMPING_SITE s ON b.snum=s.snum 
+		 WHERE b.cnum=(SELECT cnum FROM CAMPING_MAIN WHERE vnum=#{vnum}) order by b.checkin desc
 	</select>
 	
 	<!-- 캠핑지 정보 가져오기 -->
