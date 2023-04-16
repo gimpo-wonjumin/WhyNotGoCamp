@@ -238,8 +238,6 @@ var callback = function(result, status) {
 	function editCampingMain()
 	{
 		var serData = $('#editcamp').serialize();
-		alert(serData);		
-		
 		$.ajax({
 				url : '/vendor/editcampmain',	
 				method : 'post',
@@ -270,8 +268,6 @@ var callback = function(result, status) {
 	function editFacilities()
 	{
 		var serData = $('#editfac').serialize();
-		alert(serData);		
-		
 		$.ajax({
 				url : '/vendor/editfacilities',	
 				method : 'post',
@@ -304,7 +300,6 @@ var callback = function(result, status) {
 	{
 	
 		var serData = $('#'+snum).serialize();
-		alert(serData);		
 		
 		$.ajax({
 				url : '/vendor/editcampsite',	
@@ -476,15 +471,15 @@ var callback = function(result, status) {
 			<div id='editc'>
 				<form id='editcamp'>
 					<label class="camplabel">ADDRESS</label>　
-					<input type="text" size="40" name="address" id="address" class="essential">
-					<input type="hidden" id="lat" name="lat">
-					<input type="hidden" id="lng" name="lng">
+					<input type="text" size="40" name="address" id="address" class="essential" required>
+					<input type="hidden" id="lat" name="lat" required>
+					<input type="hidden" id="lng" name="lng" required>
 					<input type="button" onclick="find_address();" value="주소찾기">
 					<br>
 					<label class="camplabel">CHECKIN</label>　<input name="in_time" type="number" min="1" max="24" value="1"><br>
 					<label class="camplabel">CHECKOUT</label>　<input name="out_time" type="number" min="1" max="24" value="1"><br>
-					<label class="camplabel">PHONE</label>　<input type='text' name='phone' th:value="${cmain.camp.phone}"><p>
-					<label class="camplabel">INFO</label>　<textarea type='text' name='info' cols='40' rows='10'>[[${cmain.camp.info}]]</textarea><br>	
+					<label class="camplabel">PHONE</label>　<input type='text' name='phone' th:value="${cmain.camp.phone}" required><p>
+					<label class="camplabel">INFO</label>　<textarea type='text' name='info' cols='40' rows='10' required>[[${cmain.camp.info}]]</textarea><br>	
 					<button type='button' onclick="editCampingMain();">제출</button>			
 				</form>		
 			</div>
