@@ -4,7 +4,23 @@
 <meta charset="utf-8">
 <title>캠핑지 등록 1단계</title>
 <style type="text/css">
-	main {width: 900px; height:700px; margin:0 auto;}
+	body { font: system-ui; font-family: sans-serif; display: block; margin: auto; width:1500px; height:100%;}
+	main {position:relative; margin: 0 auto; height: 100%; margin-top:50px; margin-bottom: 70px;}
+	h4{margin-bottom: 5px;margin-top: 10px;color:#73685D;}
+	h2{color:#36302B;font-weight:bold;}
+	#content {width: 40%;  margin: 0 auto;padding-left: 10%;padding-right: 10%;}
+	#regForm {margin-left: 20%;}
+	#logo{display: flex; justify-content: center;align-items: center;}
+	#logo img{width:70px;margin:5px;}
+	input {border-radius: 5px;height: 40px;width:300px;border: 1px gray solid;}
+	.times {width: 100px;}
+	.time {width: fit-content;}
+	.time h4 {width:160px;}
+	.sites input{width:70px;height: 25px;}
+	.sites {margin-bottom: 5px;}
+	.form_btn {width: 120px; border:none; border-radius: 5px; background-color: #73685d;
+	transition: all 0.2s;font-weight: 600;color: #FFF;line-height: 40px;}
+	#save{background-color: #F6F6C9;width:90%;height: 45px;border:1px solid #464E2E;font-weight: 600;color: #464E2E;}
 </style>
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=2b61f9a26f0c00a855734ad47d35fdb8&libraries=services"></script>
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
@@ -22,33 +38,42 @@ $(function(){
 <body>
 <th:block th:include="@{/thymeleaf/vendor/Header.html}"></th:block>
 <main>
-	<!-- 캠핑장 등록 폼 -->
-	<form id="regForm" action="/vendor/reg" method="post" enctype="multipart/form-data" >
-		<div id="campname">
-		  	<input type="hidden" name="vnum" th:value="${session.vnum}">
-		  	캠핑장 이름:<input type="text" id="cname" name="cname" required="required" value="이젠 캠핑장">
-		  	<button type="button" onclick="cname_check();">상호명 중복 체크</button>
-	  	</div>
-		<div>
-			캠핑장 주소:<input type="text" size="40" name="address" id="address" class="essential">
-			<input type="hidden" id="lat" name="lat">
-			<input type="hidden" id="lng" name="lng">
-			<input type="button" onclick="find_address();" value="주소찾기">
-		</div>
-	
-	  	캠핑장 전화번호:<input type="text" name="phone" required="required" value="01099997777"><br>
-	  	캠핑장 소개<input type="text" name="info" required="required" value="이젠장 캠핑">
-	  	<div>
-	  	입실 시간
-	  	<input name="in_time" type="number" min="1" max="24" value="1">
-	  	퇴실 시간
-	  	<input name="out_time" type="number" min="1" max="24" value="1">
-	  	</div>
-	  	<input type="button" onclick="add_siteForm()" value="사이트 추가">
-		<input type="button" onclick="remove_siteForm()" value="사이트 제거"><br>
-		<div id="site"></div>
-	   <button id="save" type="button" onclick="unbind(); register();">다음 단계로</button>
-	</form>
+	<div id="content">
+	<div id="logo"><img src="/img/캠핑 로고.jpg" ><h2>캠핑어때</h2></div>
+		<!-- 캠핑장 등록 폼 -->
+		<form id="regForm" action="/vendor/reg" method="post" enctype="multipart/form-data" >
+		<h2>캠핑장 정보등록</h2>
+			<div id="campname">
+			  	<input type="hidden" name="vnum" th:value="${session.vnum}">
+			  	<h4>캠핑장 이름</h4>
+			  	<input type="text" id="cname" name="cname" required="required" value="">
+			  	<button class="form_btn" type="button" onclick="cname_check();">중복체크</button>
+		  	</div>
+			<div>
+				<h4>캠핑장 주소</h4>
+				<input type="text" size="40" name="address" id="address" class="essential">
+				<input type="hidden" id="lat" name="lat">
+				<input type="hidden" id="lng" name="lng">
+				<button class="form_btn" type="button" onclick="find_address();">주소찾기</button>
+			</div>
+		  	<h4>캠핑장 전화번호</h4> 
+		  	<input type="text" name="phone" required="required" value="01099997777"><br>
+		  	<h4>캠핑장 소개</h4> 
+		  	<input type="text" name="info" required="required" value="">
+		  	<div class="time">
+		  	<h4>입실 시간(단위:시)</h4>
+		  	<input class="times" name="in_time" type="number" min="1" max="24" value="1">
+		  	</div>
+		  	<div class="time">
+		  	<h4>퇴실 시간(단위:시)</h4>
+		  	<input class="times" name="out_time" type="number" min="1" max="24" value="1">
+		  	</div><p>
+		  	<button class="form_btn" type="button" onclick="add_siteForm()" >사이트 추가</button>
+			<button class="form_btn" type="button" onclick="remove_siteForm()">사이트 제거</button><br>
+			<div id="site"></div><p>
+		   <button id="save" type="button" onclick="unbind(); register();">다음 단계로</button>
+		</form>
+	</div>
 </main>
 <th:block th:include="@{/thymeleaf/vendor/Footer.html}"></th:block>
 </body>

@@ -54,7 +54,7 @@ function cal() {
     var calendar = new FullCalendar.Calendar(calendarEl, {
        initialView : 'dayGridMonth',
        titleFormat : function(date) {
-           return date.date.year + '년 ' + (parseInt(date.date.month) + 1) + '월';
+           return date.date.year + '년 ' + (parseInt(date.date.month) + 1) + '월 예약현황';
         },
         events : event_list,
         selectable : false, // 달력 일자 드래그 설정가능
