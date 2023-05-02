@@ -11,8 +11,5 @@ public class WhyNotGoCampApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(WhyNotGoCampApplication.class, args);
 	}
-	@Bean
-	public ServerEndpointExporter serverEndpointExporter() {
-	return new ServerEndpointExporter();
-	}
+	
 }
