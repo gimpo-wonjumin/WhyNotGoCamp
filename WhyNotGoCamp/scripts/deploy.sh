@@ -20,5 +20,5 @@ fi
 
 echo "> $JAR_PATH deploy"
 
-nohup java -jar \
+nohup java -war \
   $JAR_PATH >> /$REPOSITORY/$PROJECT/log/nohup_log.out 2>&1 &
