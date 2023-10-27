@@ -49,4 +49,7 @@ jobs:
     # S3에 빌드된 파일 업로드
     - name: Upload to AWS S3
       run: aws s3 cp --region ap-northeast-2 wngc-app.zip s3://wngc-deploy/
-    
+
+    # Deploy
+    - name: Code Deploy
+      run: aws deploy create-deployment --application-name wngc-deploy --deployment-config-name CodeDeployDefault.AllAtOnce --deployment-group-name wngc-deploy-group --s3-location bucket=wngc-deploy,bundleType=zip,key=wngc-app.zip
