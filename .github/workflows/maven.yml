@@ -29,3 +29,24 @@ jobs:
         cache: maven
     - name: Build with Maven
       run: mvn -B package --file WhyNotGoCamp/pom.xml
+
+    # 전송할 파일을 담을 디렉토리 생성
+    - name: Make Directory for deliver
+      run: mkdir deploy && cp target/*.war deploy/ && cp appspec.yml deploy/ && cp scripts/deploy.sh deploy/
+
+    # 압축
+    - name: Make zip file
+      run: zip -r -qq -j wngc-app.zip deploy
+
+    # AWS 인증
+    - name: AWS credentials
+      uses: aws-actions/configure-aws-credentials@v1
+      with:
+        aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY }}
+        aws-secret-access-key: ${{ secrets.AWS_SECRET_KEY }}
+        aws-region: ap-northeast-2
+
+    # S3에 빌드된 파일 업로드
+    - name: Upload to AWS S3
+      run: aws s3 cp --region ap-northeast-2 wngc-app.zip s3://wngc-deploy/
+    
